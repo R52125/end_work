@@ -25,15 +25,15 @@
 
 <script>
 import Navigation from "../components/Navigation";
-import Node from "../components/Node";
 import Edit_area from "../components/Edit_area";
+import Node from "../components/Node";
 export default {
   name: "Edit_view",
   components:{
     Navigation,
     Node,
     Edit_area
-  }
+  },
 }
 </script>
 
