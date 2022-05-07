@@ -40,10 +40,10 @@
       <el-button class="ml-2 mr-2" type="success" @click="add" plain>新增节点</el-button>
 <!--      <el-button class="ml-2 mr-2" type="warning" @click="add" plain>取消</el-button>-->
     </el-row>
-    <div v-for="(d, index) in normalCount" :key="index">
-      {{d["name"]}}
-      {{index}}
-    </div>
+<!--    <div v-for="(d, index) in normalCount" :key="index">-->
+<!--      {{d}}-->
+<!--      {{index}}-->
+<!--    </div>-->
   </div>
 </template>
 
@@ -95,7 +95,7 @@ export default {
     add(){
       this.add_normal();
     }
-  }
+  },
 }
 </script>
 

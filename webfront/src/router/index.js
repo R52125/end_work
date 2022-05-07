@@ -5,6 +5,7 @@ import Main from "../views/Main";
 import Myself from "../views/Myself";
 import Create from "../views/Create";
 import Edit_view from "../views/Edit_view";
+import ModuleMes from "../views/ModuleMes";
 
 //安装路由
 Vue.use(VueRouter);
@@ -34,6 +35,11 @@ export default new VueRouter({
             path:'/edit_view',
             name:'edit_view',
             component:Edit_view
-        }
+        },
+        {
+            path:'/moduleMes',
+            name:'moduleMes',
+            component:ModuleMes,
+        },
     ]
 });

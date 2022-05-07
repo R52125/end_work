@@ -15,12 +15,12 @@
           <div>
             <form>
               <div class="form-group">
-                <b-form-input id="input-1" placeholder="请输入管理员账号"></b-form-input>
+                <b-form-input id="input-1" placeholder="请输入管理员账号" v-model="userName"></b-form-input>
                 <small id="adminNameHelpBlock" class="form-text text-muted">
                   用户名5位，只包含数字
                 </small>
                 <br>
-                <b-form-input id="input-1" placeholder="请输入密码"></b-form-input>
+                <b-form-input id="input-1" placeholder="请输入密码" v-model="password"></b-form-input>
                 <small id="passwordHelpBlock" class="form-text text-muted">
                   密码长度为6-18位
                 </small>
@@ -37,7 +37,7 @@
 
 <script>
 
-import {mapMutations} from "vuex";
+import {mapMutations, mapState} from "vuex";
 
 export default {
   name: 'Main',
@@ -45,7 +45,23 @@ export default {
     return{}
   },
   computed:{
-
+    ...mapState(['userName', 'password']),
+    userName:{
+      get(){
+        return this.$store.state.userName;
+      },
+      set(value){
+        return this.$store.commit('setUserName',value);
+      }
+    },
+    password:{
+      get(){
+        return this.$store.state.password;
+      },
+      set(value){
+        return this.$store.commit('setPassWord', value);
+      }
+    }
   },
   methods:{
     ...mapMutations(['check_id']),

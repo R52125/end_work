@@ -2,6 +2,7 @@ package websocket;
 
 import java.net.InetSocketAddress;
 
+import handledata.handle;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
@@ -18,7 +19,7 @@ public class WsServer extends WebSocketServer {
     @Override
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
         // ws连接的时候触发的代码，onOpen中我们不做任何操作
-        System.out.println("已连接");
+        System.out.println("WebSocket已连接");
     }
 
     @Override
@@ -26,17 +27,12 @@ public class WsServer extends WebSocketServer {
         //断开连接时候触发代码
         userLeave(conn);
         System.out.println(reason);
+        System.out.println("bye");
     }
 
     @Override
     public void onMessage(WebSocket conn, String message) {
-        System.out.println(message);
-        if(null != message &&message.startsWith("online")){
-            String userName=message.replaceFirst("online", message);//用户名
-            userJoin(conn,userName);//用户加入
-        }else if(null != message && message.startsWith("offline")){
-            userLeave(conn);
-        }
+        new handle().analbag(conn, message);
     }
 
     @Override

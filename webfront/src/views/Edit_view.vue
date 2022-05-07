@@ -1,11 +1,8 @@
 <template>
   <div class="wrap">
     <Navigation></Navigation>
-    <div class="page-header text-center">
-      <h1>
-        模板名
-<!--        <small>Subtext for header</small>-->
-      </h1>
+    <div class="page-header text-center" style="margin-top: 20px; margin-left: 380px; margin-right: 380px">
+      <el-input v-model="moduleName" placeholder="请输入模块名"></el-input>
     </div>
     <el-container style="height: 700px; border: 1px solid #eee ;margin-top: 20px;">
       <el-container>
@@ -27,6 +24,7 @@
 import Navigation from "../components/Navigation";
 import Edit_area from "../components/Edit_area";
 import Node from "../components/Node";
+import {mapState} from "vuex";
 export default {
   name: "Edit_view",
   components:{
@@ -34,6 +32,17 @@ export default {
     Node,
     Edit_area
   },
+  computed:{
+    ...mapState(['moduleName']),
+    moduleName:{
+      get(){
+        return this.$store.state.moduleName;
+      },
+      set(value){
+        return this.$store.commit('setModuleName', value);
+      }
+    }
+  }
 }
 </script>
 

@@ -16,19 +16,19 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon2">模板名称</span>
           </div>
-          <input type="text" class="form-control" placeholder="ID" aria-label="Username" aria-describedby="basic-addon1">
+          <input type="text" class="form-control" placeholder="ID" aria-label="Username" aria-describedby="basic-addon1" v-model="moduleName">
         </div>
         <br>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">描述</span>
           </div>
-          <input type="text" class="form-control" placeholder="Description" aria-label="Username" aria-describedby="basic-addon1" v-model="Room_id">
+          <input type="text" class="form-control" placeholder="Description" aria-label="Username" aria-describedby="basic-addon1" v-model="description">
         </div>
         <br>
         <el-row>
-          <el-button type="primary" class="mr-5">确认</el-button>
-          <el-button type="danger" class="ml-5" >重置</el-button>
+          <el-button type="primary" @click="create">确认</el-button>
+<!--          <el-button type="danger" class="ml-5" >重置</el-button>-->
         </el-row>
       </el-card>
     </div>
@@ -37,10 +37,36 @@
 
 <script>
 import Navigation from "../components/Navigation";
+import {mapState, mapMutations} from "vuex";
 export default {
   name: "Create",
   components:{
     Navigation
+  },
+  computed:{
+    ...mapState(['moduleName', 'description']),
+    moduleName:{
+      get(){
+        return this.$store.state.moduleName;
+      },
+      set(value){
+        return this.$store.commit('setModuleName', value);
+      }
+    },
+    description:{
+      get(){
+        return this.$store.state.description;
+      },
+      set(value){
+        return this.$store.commit('setDescription', value);
+      }
+    }
+  },
+  methods:{
+    ...mapMutations(['createModule']),
+    create(){
+      this.createModule();
+    }
   }
 }
 </script>

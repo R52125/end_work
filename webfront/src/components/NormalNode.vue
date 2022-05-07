@@ -6,7 +6,7 @@
       </div>
       <div class="mr-4 mb-2">
         <el-input
-            placeholder="请输入内容"
+            placeholder=""
             v-model="nodeName"
             clearable>
         </el-input>
@@ -18,7 +18,7 @@
         <el-input
             type="textarea"
             :autosize="{ minRows: 2, maxRows: 4}"
-            placeholder="请输入内容"
+            placeholder=""
             v-model="nodeContent">
         </el-input>
       </div>
@@ -32,7 +32,6 @@
 <script>
 import {mapMutations, mapState} from 'vuex';
 import CreateNextNode from "./CreateNextNode";
-import draggable from "vuedraggable";
 export default {
   name: "NormalNode",
   data: function () {
@@ -51,10 +50,10 @@ export default {
       }
     },
     nodeContent: {
-      get(){
+      get() {
         return this.$store.state.nodeContent;
       },
-      set(value){
+      set(value) {
         return this.$store.commit('setNodeContent', value);
       }
     },
@@ -76,14 +75,13 @@ export default {
     }
   },
   methods:{
-    ...mapMutations(['add_normal',]),
+    ...mapMutations(['add_normal']),
     add(){
       this.add_normal()
     }
   },
   components:{
     CreateNextNode,
-    draggable
   }
 }
 </script>

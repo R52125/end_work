@@ -48,6 +48,7 @@ public class WsPool {
      */
     public static void addUser(String userName, WebSocket conn) {
         wsUserMap.put(conn, userName); // 添加连接
+        System.out.println("wsUserMap: "+wsUserMap);
     }
 
     /**
